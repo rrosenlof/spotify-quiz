@@ -1,0 +1,15 @@
+<mat-card class="question-card">
+    <mat-card-title>Question: {{ index }} / {{ playlistLength }}</mat-card-title>
+    <mat-card-content>
+        <p>Song: {{ question.song }}</p>
+        <p>Artist: {{ question.artist }}</p>
+        <div>
+            1995<mat-slider class="slider" #slider min="1995" max="2004" step="1" value="1999"></mat-slider>2004
+        </div>
+        <p><strong>Answer: {{ slider.value }}</strong></p>
+        <button mat-stroked-button (click)="onSubmit(slider.value, question.year)">Submit</button>
+    </mat-card-content>
+</mat-card>
+<div *ngIf="index == playlistLength">
+    <p>Total Score: {{ sumScores }}</p>
+</div>
