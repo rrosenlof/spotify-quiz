@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SpotifyService } from '../services/spotify.services';
 import { Observable } from 'rxjs';
-import { Album } from '../album';
 
 @Component({
   selector: 'app-quiz',
@@ -11,6 +10,8 @@ import { Album } from '../album';
 export class QuizComponent implements OnInit {
   @Input() albums: [] = [];
   @Output() albumSelected = new EventEmitter<object>();
+  @Input() playlist: [] = [];
+  // @Output() albumSelected = new EventEmitter<object>();
   onAlbumSelected(album) {
     this.albumSelected.emit(album);
   }
@@ -35,7 +36,7 @@ export class QuizComponent implements OnInit {
       year: 2000
     },
   ]
-  playlistLength = this.questions.length;
+  playlistLength = this.playlist.length;
   pager = 
     {
       page: 0,

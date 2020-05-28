@@ -6,26 +6,27 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./album.component.css']
 })
 export class AlbumComponent implements OnInit {
-  @Input() album: { images: Array<any> };
-  @Output() albumSelected = new EventEmitter<Object>();
-  albumCover: {};
+  @Input() track;
+  @Output() trackSelected = new EventEmitter<Object>();
+  
+  trackCover: {};
 
   ngOnInit(): void {
-    const {images} = this.album;
-    const [, image] = images;
-    this.albumCover = {background: `linear-gradient(0deg, #989494, #aba6a6), url(${image.url}), no-repeat`}
+    // const {images} = this.track;
+    // const [, image] = images;
+    // this.trackCover = {background: `linear-gradient(0deg, #989494, #aba6a6), url(${image.url}), no-repeat`}
 
   }
 
 
-  getArtiste(album) {
-    const {artists} = album;
+  getArtiste(track) {
+    const {artists} = track;
     const [artist] = artists;
     return artist;
   }
 
-  onAlbumClick(e) {
-    this.albumSelected.emit(this.album);
+  onTrackClick(e) {
+    this.trackSelected.emit(this.track);
   }
 
 }

@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   currentAlbum: any = {};
   tracks = [];
 
+  playlist = [];
+
   currentAlbumTracks(id) {
     this.albumService.getAlbumTracks(id).subscribe((response: any) => {
       const {items} = response;
@@ -28,12 +30,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.albumService.getAlbums().subscribe((response: any) => {
-      const {albums} = response;
-      const {items} = albums;
-      this.currentAlbum = items[0];
-      this.albums = items;
-      this.currentAlbumTracks(this.currentAlbum.id);
-    })
+    // this.albumService.getAlbums().subscribe((response: any) => {
+    //   const {albums} = response;
+    //   const {items} = albums;
+    //   this.currentAlbum = items[0];
+    //   this.albums = items;
+    //   this.currentAlbumTracks(this.currentAlbum.id);
+    // });
+    this.albumService.getPlaylist().subscribe((response: any) => {
+      this.playlist = response.tracks.items;
+    });
   }
 }
