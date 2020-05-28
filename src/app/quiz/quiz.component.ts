@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  playlistLength = 3;
+  
   questions = [
     {
       id: 1,
@@ -27,6 +27,13 @@ export class QuizComponent implements OnInit {
       year: 2000
     },
   ]
+  playlistLength = this.questions.length;
+  pager = 
+    {
+      page: 0,
+      end: this.playlistLength
+    }
+  
 
   score = 0;
   constructor() { }
@@ -36,6 +43,7 @@ export class QuizComponent implements OnInit {
 
   onAnswered(score: number) {
     this.score += score;
+    this.pager.page += 1;
   }
 
 }

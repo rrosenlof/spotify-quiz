@@ -1,5 +1,10 @@
-<app-question *ngFor="let question of questions; let i = index" 
-    [question]="question" [index]="i+1" [playlistLength]="playlistLength" (score)="onAnswered($event)"></app-question>
-<div>
+<ng-container *ngFor="let question of questions; let i = index" >
+    <ng-container *ngIf="i == pager.page">
+        <app-question  
+            [question]="question" [index]="i+1" [playlistLength]="playlistLength" (score)="onAnswered($event)">
+        </app-question>
+    </ng-container>
+</ng-container>
+<div *ngIf="pager.end == pager.page">
     <p>Total Score: {{ score }}</p>
 </div>    
