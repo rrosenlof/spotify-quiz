@@ -9,6 +9,7 @@ import { ResultsComponent } from './results/results.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { QuizComponent } from './quiz/quiz.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
     AppComponent,
     HomeComponent,
     QuestionComponent,
-    ResultsComponent
+    ResultsComponent,
+    QuizComponent
   ],
   imports: [
     BrowserModule,

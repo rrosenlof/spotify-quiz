@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-question',
@@ -10,7 +11,8 @@ export class QuestionComponent implements OnInit {
   @Input() question;
   @Input() index: number;
   @Input() playlistLength: number;
-  sumScores: number = 0;
+  @Output() score: EventEmitter<number> = new EventEmitter();
+  didAnswer = false;
 
   constructor() { }
 
@@ -19,8 +21,8 @@ export class QuestionComponent implements OnInit {
 
   onSubmit(input, answer) {
     let score = this.checkAnswer(input, answer);
-    this.sumScores += score;
-    return alert(score);
+    this.score.emit(score);
+    this.didAnswer = true;
   }
 
   checkAnswer(input, answer) {
