@@ -1,0 +1,8 @@
+<div class="album" (click)="onAlbumClick($event)">
+    <div [ngStyle]="albumCover">
+        <div class="details">
+            <h3>{{album.name}}</h3>
+            <h4>{{getArtiste(album).name}}</h4>
+        </div>
+    </div>
+</div>

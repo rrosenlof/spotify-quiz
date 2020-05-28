@@ -8,3 +8,12 @@
 <div *ngIf="pager.end == pager.page">
     <p>Total Score: {{ score }}</p>
 </div>    
+
+<section class="album-section">
+    <div>
+        <h4>Latest Albums</h4>
+    </div>
+    <div class="album-list">
+        <app-album *ngFor="let album of albums" [album]="album" (albumSelected)="onAlbumSelected($event)"></app-album>
+    </div>
+</section>

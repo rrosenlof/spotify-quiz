@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { SpotifyService } from '../services/spotify.services';
+import { Observable } from 'rxjs';
+import { Album } from '../album';
 
 @Component({
   selector: 'app-quiz',
@@ -6,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  
+  @Input() albums: [] = [];
+  @Output() albumSelected = new EventEmitter<object>();
+  onAlbumSelected(album) {
+    this.albumSelected.emit(album);
+  }
+
   questions = [
     {
       id: 1,
@@ -36,9 +44,10 @@ export class QuizComponent implements OnInit {
   
 
   score = 0;
-  constructor() { }
+  constructor(private _spotifyService: SpotifyService) { }
 
   ngOnInit(): void {
+    
   }
 
   onAnswered(score: number) {
