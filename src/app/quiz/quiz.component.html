@@ -1,19 +1,10 @@
-<ng-container *ngFor="let question of questions; let i = index" >
+<ng-container *ngFor="let track of playlist; let i = index" >
     <ng-container *ngIf="i == pager.page">
-        <!-- <app-question  
-            [question]="question" [index]="i+1" [playlistLength]="playlistLength" (score)="onAnswered($event)">
-        </app-question> -->
+        <app-question [track]="track" 
+            [index]="i+1" [playlistLength]="playlistLength" (score)="onAnswered($event)">
+        </app-question>
     </ng-container>
 </ng-container>
 <div *ngIf="pager.end == pager.page">
     <p>Total Score: {{ score }}</p>
 </div>    
-
-<section class="playlist-section">
-    <div>
-        <h4>Playlist</h4>
-    </div>
-    <div class="playlist-tracks">
-        <app-album *ngFor="let track of playlist" [track]="track" ></app-album>
-    </div>
-</section>

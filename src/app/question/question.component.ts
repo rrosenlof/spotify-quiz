@@ -12,6 +12,8 @@ export class QuestionComponent implements OnInit {
   @Input() index: number;
   @Input() playlistLength: number;
   @Output() score: EventEmitter<number> = new EventEmitter();
+  @Input() track;
+  @Output() trackSelected = new EventEmitter<Object>();
   didAnswer = false;
 
   constructor() { }

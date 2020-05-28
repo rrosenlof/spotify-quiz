@@ -1,8 +1,9 @@
 <mat-card class="question-card">
     <mat-card-title>Question: {{ index }} / {{ playlistLength }}</mat-card-title>
     <mat-card-content>
-        <p>Song: {{ question.song }}</p>
-        <p>Artist: {{ question.artist }}</p>
+        <p>Song: {{ track.track.name }}</p>
+        <p>Artist: {{ track.track.album.artists[0].name }}</p>
+        <p>{{track.track.album.release_date}}</p>
         <div>
             1995<mat-slider class="slider" #slider min="1995" max="2004" step="1" value="1999"></mat-slider>2004
         </div>

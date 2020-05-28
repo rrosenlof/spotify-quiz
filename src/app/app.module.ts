@@ -13,7 +13,6 @@ import { QuizComponent } from './quiz/quiz.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpotifyService } from './services/spotify.services';
 import { AlbumService } from './services/album.service';
-import { AlbumComponent } from './album/album.component';
 
 
 @NgModule({
@@ -23,7 +22,6 @@ import { AlbumComponent } from './album/album.component';
     QuestionComponent,
     ResultsComponent,
     QuizComponent,
-    AlbumComponent
   ],
   imports: [
     BrowserModule,
