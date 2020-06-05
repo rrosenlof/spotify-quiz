@@ -3,6 +3,7 @@
     <mat-card-content>
         <p>Song: {{ track.name }}</p>
         <p>Artist: {{ track.album.artists[0].name }}</p>
+        <iframe [src]="spotifySrc" width="450" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         <div>
             1995<mat-slider class="slider" #slider min='{{yearRange[0]}}' max='{{yearRange[1]}}' step="1" value="{{yearRange[2]}}"></mat-slider>{{ yearRange[1] }}
         </div>

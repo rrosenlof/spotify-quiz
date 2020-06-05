@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Question } from '../models/question';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-question',
@@ -19,10 +20,14 @@ export class QuestionComponent implements OnInit {
 
   didAnswer = false;
   answers: any[] = [];
+  spotifySrc: SafeResourceUrl;
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) {
+    
+   }
 
   ngOnInit() {
+    this.spotifySrc = this.sanitizer.bypassSecurityTrustResourceUrl("https://open.spotify.com/embed/track/".concat(this.track.id));
   }
 
   onSubmit(input: number, answer: string) {
