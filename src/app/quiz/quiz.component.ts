@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class QuizComponent implements OnInit {
   @Input() playlist: [] = [];
   @Input() playlistLength: number;
+  @Input() years;
 
   pager = { page: 0, end: this.playlistLength }
   score = 0;
@@ -25,5 +26,4 @@ export class QuizComponent implements OnInit {
     this.pager.page += 1;
     console.log(this.pager)
   }
-
 }

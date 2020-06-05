@@ -1,7 +1,8 @@
 <ng-container *ngFor="let track of playlist; let i = index" >
     <ng-container *ngIf="i == pager.page">
         <app-question [track]="track" 
-            [index]="i+1" [playlistLength]="playlistLength" (score)="onAnswered($event)">
+            [index]="i+1" [playlistLength]="playlistLength" 
+            [years]="years" (score)="onAnswered($event)">
         </app-question>
     </ng-container>
 </ng-container>

@@ -12,17 +12,19 @@ export class QuestionComponent implements OnInit {
   @Input() question: Question;
   @Input() index: number;
   @Output() score: EventEmitter<number> = new EventEmitter();
-  @Input() track;
+  @Input() track: any;
   @Output() trackSelected = new EventEmitter<Object>();
   @Input() playlistLength: number;
+  @Input() years;
   didAnswer = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.years);
   }
 
-  onSubmit(input, answer) {
+  onSubmit(input: number, answer: string) {
     console.log(input, answer);
     let year = this.formatDate(answer);
     let score = this.checkAnswer(input, year);
@@ -30,14 +32,16 @@ export class QuestionComponent implements OnInit {
     this.didAnswer = true;
   }
 
-  checkAnswer(input, answer) {
+  checkAnswer(input: number, answer: number) {
     return Math.abs(input-answer);
   }
 
   formatDate(date: string) {
     date = date.substr(0,4);
     var year = Number(date);
-    return year
+    return year;
   }
+
+
 
 }

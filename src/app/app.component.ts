@@ -12,13 +12,32 @@ export class AppComponent implements OnInit {
   constructor(private playlistService: PlaylistService) {}
   
   playlist = [];
-  playlistLength: number = 0;
+  playlistLength: number = 0;  
+  years = [];
 
   ngOnInit() {
     this.playlistService.getPlaylist().subscribe((response: any) => {
-      console.log(response)
       this.playlist = response.items;
       this.playlistLength = response.items.length;
+      this.years = this.findRange(this.playlist);
     });
+    
+  }
+
+  findRange(playlist) {
+    console.log(playlist);
+    let allYears = [];
+    let years = [];
+    for (let i =0; i<playlist.length; i++) {
+      let year = playlist[i].track.album.release_date.substr(0,4);
+      allYears.push(year);
+    }
+    const min = Math.min.apply(null, allYears);
+    const max = Math.max.apply(null, allYears);
+    years.push(min-5);
+    years.push(max);
+    const start = Math.floor((min + max)/2);
+    years.push(start);
+    return years;
   }
 }
