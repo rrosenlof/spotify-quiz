@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { QuizComponent } from './quiz/quiz.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpotifyService } from './services/spotify.services';
-import { AlbumService } from './services/album.service';
+import { PlaylistService } from './services/playlist.service';
 
 
 @NgModule({
@@ -31,7 +31,7 @@ import { AlbumService } from './services/album.service';
     MatButtonModule,
     HttpClientModule
   ],
-  providers: [SpotifyService, AlbumService],
+  providers: [SpotifyService, PlaylistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

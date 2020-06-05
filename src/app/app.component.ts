@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlbumService } from './services/album.service';
+import { PlaylistService } from './services/playlist.service';
 const NUM_Q: number = 10;
 @Component({
   selector: 'app-root',
@@ -9,13 +9,16 @@ const NUM_Q: number = 10;
 export class AppComponent implements OnInit {
   title = 'spotify-years-quiz';
 
-  constructor(private albumService: AlbumService) {}
+  constructor(private playlistService: PlaylistService) {}
   
   playlist = [];
+  playlistLength: number = 0;
 
   ngOnInit() {
-    this.albumService.getPlaylist().subscribe((response: any) => {
+    this.playlistService.getPlaylist().subscribe((response: any) => {
       this.playlist = response.tracks.items;
+      this.playlistLength = response.tracks.items.length;
+      console.log(response.tracks.items.length)
     });
   }
 }

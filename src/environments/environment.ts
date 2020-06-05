@@ -6,7 +6,7 @@ export const environment = {
   production: false,
    clientId: '23fdf41946e944968c36e3b7d1fe14ea',
    clientSecret: '493fb29472084e36820aa2fc3b0ccb3d',
-   spotifySecret: 'BQD7W7k1N7iKU8H9kRZh0-5TjRzdRNDeTmaSXMt30buF3bmqBiRvymLSCNEylvcLf6l1WQg9VCcLK_ung6Ii_CRTQT-S_JBI4Ka9Lhfd4Z4geMKbnLW23Srm-2J1hzPfMu3RxU1ueHJwhCYe0WBVYUl-E-TgOMXcY2k',
+   spotifySecret: 'BQARw5JhmSB2f6-TXpJwk1nFElTVXPzjWTUb-FdCv-M3Ys_kGv6s3u2jkS5qVFobjCyS_A9rXGGnhzOWl0bYxSeYD2-qnMyfKkRMlNjhQTkQkIlKP4HtBx2KLLdjIocYcVATPJuyU5P7TRc5djqu3NG9QtD5H3GbJ5A',
    playlistId: '4p0lxHkuYRdQq01Vmwmwns'
 };
 

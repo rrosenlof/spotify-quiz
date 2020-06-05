@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Question } from '../models/question';
 
 @Component({
   selector: 'app-question',
@@ -8,12 +9,12 @@ import { EventEmitter } from '@angular/core';
 })
 
 export class QuestionComponent implements OnInit {
-  @Input() question;
+  @Input() question: Question;
   @Input() index: number;
-  @Input() playlistLength: number;
   @Output() score: EventEmitter<number> = new EventEmitter();
   @Input() track;
   @Output() trackSelected = new EventEmitter<Object>();
+  @Input() playlistLength: number;
   didAnswer = false;
 
   constructor() { }
