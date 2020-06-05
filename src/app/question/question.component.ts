@@ -23,13 +23,21 @@ export class QuestionComponent implements OnInit {
   }
 
   onSubmit(input, answer) {
-    let score = this.checkAnswer(input, answer);
+    console.log(input, answer);
+    let year = this.formatDate(answer);
+    let score = this.checkAnswer(input, year);
     this.score.emit(score);
     this.didAnswer = true;
   }
 
   checkAnswer(input, answer) {
     return Math.abs(input-answer);
+  }
+
+  formatDate(date: string) {
+    date = date.substr(0,4);
+    var year = Number(date);
+    return year
   }
 
 }

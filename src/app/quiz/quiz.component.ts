@@ -8,8 +8,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['./quiz.component.css']
 })
 export class QuizComponent implements OnInit {
-  @Input() albums: [] = [];
-  @Output() albumSelected = new EventEmitter<object>();
   @Input() playlist: [] = [];
   @Input() playlistLength: number;
 
