@@ -16,9 +16,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.playlistService.getPlaylist().subscribe((response: any) => {
-      this.playlist = response.tracks.items;
-      this.playlistLength = response.tracks.items.length;
-      console.log(response.tracks.items.length)
+      console.log(response)
+      this.playlist = response.items;
+      this.playlistLength = response.items.length;
     });
   }
 }

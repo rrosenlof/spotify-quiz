@@ -14,7 +14,7 @@ export class PlaylistService {
   }
 
   getPlaylist() {
-    return this.http.get(`https://api.spotify.com/v1/playlists/${environment.playlistId}`, {
+    return this.http.get(`https://api.spotify.com/v1/playlists/${environment.playlistId}/tracks?limit=10`, {
       headers: this.headers
     });
   }
