@@ -1,11 +1,34 @@
-<ng-container *ngFor="let track of playlist; let i = index" >
+<ng-container *ngFor="let track of tracks; let i = index" >
     <ng-container *ngIf="i == pager.page">
-        <app-question [track]="track" 
-            [index]="i+1" [playlistLength]="playlistLength" 
-            [years]="years" (score)="onAnswered($event)">
+        <app-question [track]="track" [index]="i+1"
+            [yearRange]="yearRange" [limit]="limit"
+            (answer)="onAnswered($event)">
         </app-question>
     </ng-container>
 </ng-container>
-<div *ngIf="playlistLength == pager.page">
+<div *ngIf="check(pager.page, limit)">
     <p>Total Score: {{ score }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Song</th>
+                <th>Artist</th>
+                <th>Album</th>
+                <th>Release Year</th>
+                <th>Your Answer</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let track of tracks; let j = index">
+                <td>{{ track.name }}</td>
+                <td>{{ track.artists[0].name }}</td>
+                <td>{{ track.album.name }}</td>
+                <td>{{ track.album.release_date | slice:0:4 }}</td>
+                <td>{{ answers[j][0] }}</td>
+                <td>{{ answers[j][1] }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>    
+

@@ -1,12 +1,12 @@
 <mat-card class="question-card">
-    <mat-card-title>Question: {{ index }} / {{ playlistLength }}</mat-card-title>
+    <mat-card-title>Question: {{ index }} / {{ limit }}</mat-card-title>
     <mat-card-content>
-        <p>Song: {{ track.track.name }}</p>
-        <p>Artist: {{ track.track.album.artists[0].name }}</p>
+        <p>Song: {{ track.name }}</p>
+        <p>Artist: {{ track.album.artists[0].name }}</p>
         <div>
-            {{ years[0] }}<mat-slider class="slider" #slider min='{{years[0]}}' max='{{years[1]}}' step="1" value="{{years[2]}}"></mat-slider>{{ years[1] }}
+            1995<mat-slider class="slider" #slider min='{{yearRange[0]}}' max='{{yearRange[1]}}' step="1" value="{{yearRange[2]}}"></mat-slider>{{ yearRange[1] }}
         </div>
         <p><strong>Answer: {{ slider.value }}</strong></p>
-        <button mat-stroked-button (click)="onSubmit(slider.value, track.track.album.release_date)" [disabled]="didAnswer">Submit</button>
+        <button mat-stroked-button (click)="onSubmit(slider.value, track.album.release_date)" [disabled]="didAnswer">Submit</button>
     </mat-card-content>
 </mat-card>

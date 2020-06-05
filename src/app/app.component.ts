@@ -14,30 +14,30 @@ export class AppComponent implements OnInit {
   playlist = [];
   playlistLength: number = 0;  
   years = [];
+  trackNums = [];
+  tracks = [];
+
+  // Hardcoded values:
+  limit: number = 10;
+  yearRange = [1995, 2005, 2000];
 
   ngOnInit() {
     this.playlistService.getPlaylist().subscribe((response: any) => {
       this.playlist = response.items;
-      this.playlistLength = response.items.length;
-      this.years = this.findRange(this.playlist);
+      this.playlistLength = response.total;
+      this.getRandomOffsets();
+      for (var i = 0; i < this.limit; i++){
+        this.playlistService.getPlaylistTrack(this.trackNums[i]).subscribe((response: any) => {
+          this.tracks.push(response.items[0].track);
+        });
+      }
     });
-    
   }
 
-  findRange(playlist) {
-    console.log(playlist);
-    let allYears = [];
-    let years = [];
-    for (let i =0; i<playlist.length; i++) {
-      let year = playlist[i].track.album.release_date.substr(0,4);
-      allYears.push(year);
+  getRandomOffsets() {
+    while (this.trackNums.length < this.limit) {
+      var num = this.trackNums.push(Math.floor(Math.random()*this.playlistLength));
+      if(this.trackNums.indexOf(num) === -1) this.trackNums.push(num);
     }
-    const min = Math.min.apply(null, allYears);
-    const max = Math.max.apply(null, allYears);
-    years.push(min-5);
-    years.push(max);
-    const start = Math.floor((min + max)/2);
-    years.push(start);
-    return years;
   }
 }

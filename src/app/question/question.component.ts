@@ -9,26 +9,29 @@ import { Question } from '../models/question';
 })
 
 export class QuestionComponent implements OnInit {
-  @Input() question: Question;
-  @Input() index: number;
-  @Output() score: EventEmitter<number> = new EventEmitter();
-  @Input() track: any;
   @Output() trackSelected = new EventEmitter<Object>();
-  @Input() playlistLength: number;
-  @Input() years;
+  @Output() answer: EventEmitter<number[]> = new EventEmitter();
+
+  @Input() index: number;
+  @Input() yearRange;
+  @Input() limit: number;
+  @Input() track;
+
   didAnswer = false;
+  answers: any[] = [];
 
   constructor() { }
 
-  ngOnInit(): void {
-    console.log(this.years);
+  ngOnInit() {
   }
 
   onSubmit(input: number, answer: string) {
-    console.log(input, answer);
     let year = this.formatDate(answer);
     let score = this.checkAnswer(input, year);
-    this.score.emit(score);
+    let ansArray = new Array();
+    ansArray[0] = input;
+    ansArray[1] = score;
+    this.answer.emit(ansArray);
     this.didAnswer = true;
   }
 
@@ -41,7 +44,4 @@ export class QuestionComponent implements OnInit {
     var year = Number(date);
     return year;
   }
-
-
-
 }
