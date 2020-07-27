@@ -1,6 +1,6 @@
 # Spotify Years Quiz
 
-A partially finished project using the Spotify API to create a quiz.
+A partially finished project using the Spotify API to create a quiz. Using Angular
 
 ## To Do
 
